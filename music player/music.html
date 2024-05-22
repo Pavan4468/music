@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        body {
+            background-image: url("img5.jpg");
+            color: black; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+            
+           
+
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px; 
+        }
+        .heading {
+            margin-bottom: 20px;
+        }
+        .box {
+            text-align: center;
+            display: none; 
+        }
+        .box.active {
+            display: block;
+        }
+        .box img {
+            width: 350px; 
+            height: 350px; 
+            display: block; 
+            margin: 0 auto 10px; 
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            margin: 0 10px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+ 
+<div class="container">
+    <div class="heading"><h1>Music Gallery</h1></div>  
+    <div class="music-container"></div>
+    <div class="box active">
+        <div class="image">
+            <img src="mahrshi 1.jpg" >
+        </div>
+        <div class="Music">
+            <audio src="mahrshi.mp3" controls></audio>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="image">
+            <img src="jeo.jpg" >
+        </div>
+        <div class="Music">
+            <audio src="Urugi Urugi.mp3" controls></audio>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="image">
+            <img src="Devara-1.png" >
+        </div>
+        <div class="Music">
+            <audio src="NTR.mp3" controls></audio>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="image">
+            <img src="one love.jpg" >
+        </div>
+        <div class="Music">
+            <audio src="One Love - Shubh 128 Kbps.mp3" controls></audio>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="image">
+            <img src="famil star.png" >
+        </div>
+        <div class="Music">
+            <audio src="Nandanandanaa.mp3" controls></audio>
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+    </div>
+</div>
+
+<script>
+    const boxes = document.querySelectorAll('.box');
+    let currentIndex = 0;
+
+    function showBox(index) {
+        
+        boxes.forEach(box => box.classList.remove('active'));
+        
+        boxes[index].classList.add('active');
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % boxes.length;
+        showBox(currentIndex);
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + boxes.length) % boxes.length;
+        showBox(currentIndex);
+    });
+
+    
+    showBox(currentIndex);
+</script>
+
+</body>
+</html>
